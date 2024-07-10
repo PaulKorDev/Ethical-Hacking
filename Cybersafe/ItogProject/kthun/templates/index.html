@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Главная страница</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/chat.css') }}" />
+</head>
+<body>
+    <div class='chat'>
+        <div class="chat-head">
+            <p id="welcome-message">Добро пожаловать, {{ username }}!</p>
+        </div>
+        <div class='chat-messages'>
+            {% for post in posts %}
+                <div class="message-other">
+                    <div class="message__outer">{{ post[0] }} ({{ post[2] }}):</div>
+                    <div class="message__outer" id="message_text">{{ post[1] }}</div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class='chat-input'>
+            <form method='post' id='chat-form'>
+                <div class='chat-form_input'><input type='text' name='content' class="but-inp" placeholder='Введите сообщение'></div>
+                <div class='chat-form_submit'><input type="submit" class="but-sub" value="Отправить"></div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
